@@ -1,0 +1,9 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://bxf2rwoohper8"]
+
+[ext_resource type="FontFile" uid="uid://yilhk05egfdh" path="res://Assets/BebasNeue-Regular.otf" id="1_yqayk"]
+
+[resource]
+Button/font_sizes/font_size = 30
+Button/fonts/font = ExtResource("1_yqayk")
+Label/font_sizes/font_size = 40
+Label/fonts/font = ExtResource("1_yqayk")

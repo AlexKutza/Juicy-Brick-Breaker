@@ -1,21 +1,30 @@
-[gd_scene load_steps=13 format=3 uid="uid://bd5m3yq1k5fx8"]
+[gd_scene load_steps=17 format=3 uid="uid://bd5m3yq1k5fx8"]
 
 [ext_resource type="Script" path="res://Brick/Brick_Container.gd" id="1"]
 [ext_resource type="PackedScene" uid="uid://dmwf8wjdir6y5" path="res://Paddle/Paddle.tscn" id="2"]
 [ext_resource type="Texture2D" uid="uid://di037fovb5rjd" path="res://Assets/Background.png" id="2_3nrt1"]
 [ext_resource type="Script" path="res://Ball/Ball_Container.gd" id="3"]
 [ext_resource type="Script" path="res://Game.gd" id="4"]
+[ext_resource type="Texture2D" uid="uid://nscsobhw7kdo" path="res://Assets/Walls.png" id="4_b3tvc"]
 [ext_resource type="PackedScene" uid="uid://ci5q3vmuimsfr" path="res://UI/Pause_Menu.tscn" id="5"]
 [ext_resource type="Script" path="res://Wall/Wall.gd" id="6"]
 [ext_resource type="PackedScene" uid="uid://do7pdpjxteg8e" path="res://UI/HUD.tscn" id="7"]
 [ext_resource type="PackedScene" uid="uid://r1nm10jeqyta" path="res://UI/Instructions.tscn" id="8"]
 [ext_resource type="Script" path="res://Effects/Fever.gd" id="9"]
+[ext_resource type="Theme" uid="uid://bxf2rwoohper8" path="res://UI/Theme2.tres" id="10_a73kd"]
+[ext_resource type="FontFile" uid="uid://yilhk05egfdh" path="res://Assets/BebasNeue-Regular.otf" id="13_kei4v"]
 
 [sub_resource type="RectangleShape2D" id="1"]
-size = Vector2(200, 1000)
+size = Vector2(204, 1000)
 
 [sub_resource type="RectangleShape2D" id="2"]
-size = Vector2(1224, 200)
+size = Vector2(1252, 200)
+
+[sub_resource type="Theme" id="Theme_cwxkd"]
+Button/font_sizes/font_size = 30
+Button/fonts/font = ExtResource("13_kei4v")
+Label/font_sizes/font_size = 30
+Label/fonts/font = ExtResource("13_kei4v")
 
 [node name="Game" type="Node2D"]
 script = ExtResource("4")
@@ -30,30 +39,53 @@ texture = ExtResource("2_3nrt1")
 [node name="Wall_Left" type="StaticBody2D" parent="Wall_Container"]
 script = ExtResource("6")
 
-[node name="ColorRect" type="ColorRect" parent="Wall_Container/Wall_Left"]
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Wall_Container/Wall_Left"]
-position = Vector2(-90, 400)
+position = Vector2(-88, 400)
 shape = SubResource("1")
+
+[node name="Wall" type="Sprite2D" parent="Wall_Container/Wall_Left"]
+position = Vector2(1, 400.6)
+scale = Vector2(0.555208, 1.2358)
+texture = ExtResource("4_b3tvc")
 
 [node name="Wall_Right" type="StaticBody2D" parent="Wall_Container"]
 position = Vector2(1152, 2.08165e-12)
 script = ExtResource("6")
 
-[node name="ColorRect" type="ColorRect" parent="Wall_Container/Wall_Right"]
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Wall_Container/Wall_Right"]
-position = Vector2(90, 400)
+position = Vector2(88, 400)
 shape = SubResource("1")
+
+[node name="Wall" type="Sprite2D" parent="Wall_Container/Wall_Right"]
+position = Vector2(-2, 399.6)
+scale = Vector2(0.555, 1.23272)
+texture = ExtResource("4_b3tvc")
+flip_h = true
 
 [node name="Wall_Top" type="StaticBody2D" parent="Wall_Container"]
 script = ExtResource("6")
 
-[node name="ColorRect" type="ColorRect" parent="Wall_Container/Wall_Top"]
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Wall_Container/Wall_Top"]
-position = Vector2(512, -90)
+position = Vector2(526, -85)
 shape = SubResource("2")
+
+[node name="Wall" type="Sprite2D" parent="Wall_Container/Wall_Top"]
+position = Vector2(576.854, 3.00002)
+rotation = 1.5708
+scale = Vector2(0.555, 1.81521)
+texture = ExtResource("4_b3tvc")
+
+[node name="CornerWall" type="Sprite2D" parent="Wall_Container"]
+position = Vector2(8, 4)
+rotation = 0.785398
+scale = Vector2(0.555, 0.7)
+texture = ExtResource("4_b3tvc")
+
+[node name="CornerWall2" type="Sprite2D" parent="Wall_Container"]
+position = Vector2(1140, 1)
+rotation = 2.35619
+scale = Vector2(0.555, 0.7)
+texture = ExtResource("4_b3tvc")
 
 [node name="Brick_Container" type="Node2D" parent="."]
 script = ExtResource("1")
@@ -76,14 +108,16 @@ script = ExtResource("9")
 [node name="UI" type="CanvasLayer" parent="."]
 
 [node name="HUD" parent="UI" instance=ExtResource("7")]
-visible = false
+theme = SubResource("Theme_cwxkd")
 
 [node name="Pause_Menu" parent="UI" instance=ExtResource("5")]
 process_mode = 3
 visible = false
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("10_a73kd")
 
 [node name="Instructions" parent="UI" instance=ExtResource("8")]
+theme = ExtResource("10_a73kd")
 
 [connection signal="timeout" from="Fever/Timer" to="Fever" method="_on_Timer_timeout"]

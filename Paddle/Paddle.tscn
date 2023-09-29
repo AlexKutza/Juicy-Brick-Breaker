@@ -1,11 +1,31 @@
-[gd_scene load_steps=5 format=3 uid="uid://dmwf8wjdir6y5"]
+[gd_scene load_steps=11 format=3 uid="uid://dmwf8wjdir6y5"]
 
 [ext_resource type="Script" path="res://Paddle/Paddle.gd" id="1"]
 [ext_resource type="Texture2D" uid="uid://m050v10o5ktw" path="res://Assets/Paddle.png" id="2_hwtod"]
 [ext_resource type="Texture2D" uid="uid://ccbnm1h4qghit" path="res://Assets/Squiggle.png" id="3_av46q"]
+[ext_resource type="Texture2D" uid="uid://b284cvr6x0q8p" path="res://Assets/Zigzag.png" id="4_0hlbe"]
+[ext_resource type="Texture2D" uid="uid://xtlra5q3p3sm" path="res://Assets/Circle.png" id="5_2og25"]
 
 [sub_resource type="RectangleShape2D" id="1"]
 size = Vector2(100, 20)
+
+[sub_resource type="Curve" id="Curve_upc30"]
+_data = [Vector2(0, 0.536842), 0.0, 0.0, 0, 0, Vector2(0.505495, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.0105263), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Curve" id="Curve_rfn5j"]
+min_value = -1.0
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1e-05, -1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Curve" id="Curve_6yhew"]
+_data = [Vector2(0, 0.505263), 0.0, 0.0, 0, 0, Vector2(0.5, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.0526316), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Curve" id="Curve_1evpc"]
+min_value = -1.0
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1e-05, -1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 3
 
 [node name="Paddle" type="CharacterBody2D"]
 script = ExtResource("1")
@@ -19,15 +39,57 @@ shape = SubResource("1")
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
 emitting = false
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Paddle" type="Sprite2D" parent="."]
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("2_hwtod")
 
-[node name="Shapes" type="CPUParticles2D" parent="."]
+[node name="Squiggle" type="CPUParticles2D" parent="."]
 emitting = false
-amount = 1
-lifetime = 0.5
+amount = 2
+lifetime = 0.4
 one_shot = true
 texture = ExtResource("3_av46q")
+emission_shape = 3
+emission_rect_extents = Vector2(45, 15)
+spread = 180.0
+initial_velocity_min = 100.0
+initial_velocity_max = 300.0
 scale_amount_min = 0.1
-scale_amount_max = 0.1
+scale_amount_max = 0.2
+scale_amount_curve = SubResource("Curve_upc30")
+hue_variation_max = 0.3
+hue_variation_curve = SubResource("Curve_rfn5j")
+
+[node name="ZigZag" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 2
+lifetime = 0.4
+one_shot = true
+texture = ExtResource("4_0hlbe")
+emission_shape = 3
+emission_rect_extents = Vector2(45, 15)
+spread = 180.0
+initial_velocity_min = 100.0
+initial_velocity_max = 300.0
+scale_amount_min = 0.1
+scale_amount_max = 0.2
+scale_amount_curve = SubResource("Curve_upc30")
+hue_variation_max = 0.3
+hue_variation_curve = SubResource("Curve_rfn5j")
+
+[node name="Circle" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 2
+lifetime = 0.4
+one_shot = true
+texture = ExtResource("5_2og25")
+emission_shape = 3
+emission_rect_extents = Vector2(45, 15)
+spread = 180.0
+initial_velocity_min = 100.0
+initial_velocity_max = 300.0
+scale_amount_min = 0.1
+scale_amount_max = 0.2
+scale_amount_curve = SubResource("Curve_6yhew")
+hue_variation_max = 0.3
+hue_variation_curve = SubResource("Curve_1evpc")

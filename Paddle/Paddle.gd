@@ -12,7 +12,7 @@ func _ready():
 	target = Vector2(Global.VP.x / 2, Global.VP.y - 80)
 
 func _physics_process(_delta):
-	target.x = clamp(target.x, width/2, Global.VP.x - width/2)
+	target.x = clamp(target.x, width/1.6, Global.VP.x - width/1.6)
 	position = target
 	for c in $Powerups.get_children():
 		c.payload()
@@ -22,7 +22,10 @@ func _input(event):
 		target.x += event.relative.x
 
 func hit(_ball):
-	$Shapes.emitting = true
+	$Squiggle.emitting = true
+	$ZigZag.emitting = true
+	$Circle.emitting = true
+	
 
 func powerup(payload):
 	for c in $Powerups.get_children():

@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://ei3ny6s8bla5"]
+[gd_scene load_steps=4 format=3 uid="uid://ei3ny6s8bla5"]
 
 [ext_resource type="Script" path="res://UI/Main_Menu.gd" id="1"]
-[ext_resource type="FontFile" uid="uid://dfmpudgreviwj" path="res://Assets/Orbitron Bold.otf" id="2_jofij"]
+[ext_resource type="Theme" uid="uid://vv0d2bhl8fy8" path="res://UI/Theme.tres" id="1_popb3"]
+[ext_resource type="FontFile" uid="uid://bpe1unuhevqes" path="res://Assets/wheaton-capitals.capitals-regular.otf" id="2_fgi4y"]
 
 [node name="Main_Menu" type="Control"]
 layout_mode = 3
@@ -10,21 +11,22 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_popb3")
 script = ExtResource("1")
 
 [node name="Background" type="ColorRect" parent="."]
 layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
-color = Color(0, 0, 0, 0.501961)
+color = Color(0, 1, 1, 0.584314)
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_bottom = -248.0
-theme_override_fonts/font = ExtResource("2_jofij")
-theme_override_font_sizes/font_size = 50
+theme_override_fonts/font = ExtResource("2_fgi4y")
+theme_override_font_sizes/font_size = 100
 text = "Brick Breaker"
 horizontal_alignment = 1
 vertical_alignment = 1

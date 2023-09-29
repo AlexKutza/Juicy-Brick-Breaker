@@ -11,7 +11,7 @@ func _ready():
 	position = new_position
 
 func _physics_process(_delta):
-	if dying and not $Shapes.emitting:
+	if dying and not $Triangle.emitting:
 		queue_free()
 
 func hit(_ball):
@@ -21,7 +21,10 @@ func die():
 	dying = true
 	collision_layer = 0
 	$Brick.hide()
-	$Shapes.emitting = true
+	$Broken.show()
+	$Triangle.emitting = true
+	$Square.emitting = true
+	$Circle.emitting = true
 	Global.update_score(score)
 	if not Global.feverish:
 		Global.update_fever(score)

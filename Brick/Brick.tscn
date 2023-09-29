@@ -1,12 +1,32 @@
-[gd_scene load_steps=6 format=3 uid="uid://bjvdmnbj44w6x"]
+[gd_scene load_steps=12 format=3 uid="uid://bjvdmnbj44w6x"]
 
 [ext_resource type="Script" path="res://Brick/Brick.gd" id="1"]
 [ext_resource type="Texture2D" uid="uid://cqnmox2gfvtdd" path="res://Assets/Brick_blue.png" id="2_s70xk"]
 [ext_resource type="Texture2D" uid="uid://7kxqhyevgxdf" path="res://Assets/Brick_red.png" id="3_8yd7d"]
 [ext_resource type="Texture2D" uid="uid://cxlang6sjt0jd" path="res://Assets/Triangle.png" id="4_ca37m"]
+[ext_resource type="Texture2D" uid="uid://xtlra5q3p3sm" path="res://Assets/Circle.png" id="5_15cfv"]
+[ext_resource type="Texture2D" uid="uid://0mrlhh3dpwne" path="res://Assets/Square.png" id="5_jbdto"]
 
 [sub_resource type="RectangleShape2D" id="1"]
 size = Vector2(90, 30)
+
+[sub_resource type="Curve" id="Curve_x3htm"]
+_data = [Vector2(0, 0.505263), 0.0, 0.0, 0, 0, Vector2(0.5, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.0526316), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Curve" id="Curve_tr3yc"]
+min_value = -1.0
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1e-05, -1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Curve" id="Curve_a0cwc"]
+_data = [Vector2(0.00549451, 0.526316), 0.0, 0.0, 0, 0, Vector2(0.5, 1), 0.0, 0.0, 0, 0, Vector2(0.989011, 0.0315789), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Curve" id="Curve_5w1g2"]
+min_value = -1.0
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1e-05, -0.91579), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 3
 
 [node name="Brick" type="StaticBody2D"]
 script = ExtResource("1")
@@ -15,6 +35,7 @@ script = ExtResource("1")
 shape = SubResource("1")
 
 [node name="Brick" type="Sprite2D" parent="."]
+modulate = Color(0.996094, 0.996094, 0.996094, 1)
 position = Vector2(0, 5)
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("2_s70xk")
@@ -25,11 +46,53 @@ position = Vector2(0, 5)
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("3_8yd7d")
 
-[node name="Shapes" type="CPUParticles2D" parent="."]
+[node name="Triangle" type="CPUParticles2D" parent="."]
 emitting = false
-amount = 1
-lifetime = 0.5
+amount = 2
+lifetime = 0.4
 one_shot = true
 texture = ExtResource("4_ca37m")
+emission_shape = 3
+emission_rect_extents = Vector2(45, 15)
+spread = 180.0
+initial_velocity_min = 100.0
+initial_velocity_max = 300.0
 scale_amount_min = 0.1
-scale_amount_max = 0.1
+scale_amount_max = 0.2
+scale_amount_curve = SubResource("Curve_x3htm")
+hue_variation_max = 0.3
+hue_variation_curve = SubResource("Curve_tr3yc")
+
+[node name="Circle" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 2
+lifetime = 0.4
+one_shot = true
+texture = ExtResource("5_15cfv")
+emission_shape = 3
+emission_rect_extents = Vector2(45, 15)
+spread = 180.0
+initial_velocity_min = 100.0
+initial_velocity_max = 300.0
+scale_amount_min = 0.1
+scale_amount_max = 0.2
+scale_amount_curve = SubResource("Curve_x3htm")
+hue_variation_max = 0.3
+hue_variation_curve = SubResource("Curve_tr3yc")
+
+[node name="Square" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 2
+lifetime = 0.4
+one_shot = true
+texture = ExtResource("5_jbdto")
+emission_shape = 3
+emission_rect_extents = Vector2(45, 15)
+spread = 180.0
+initial_velocity_min = 100.0
+initial_velocity_max = 300.0
+scale_amount_min = 0.1
+scale_amount_max = 0.2
+scale_amount_curve = SubResource("Curve_a0cwc")
+hue_variation_max = 0.2
+hue_variation_curve = SubResource("Curve_5w1g2")
