@@ -1,6 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://bjvdmnbj44w6x"]
+[gd_scene load_steps=6 format=3 uid="uid://bjvdmnbj44w6x"]
 
 [ext_resource type="Script" path="res://Brick/Brick.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://cqnmox2gfvtdd" path="res://Assets/Brick_blue.png" id="2_s70xk"]
+[ext_resource type="Texture2D" uid="uid://7kxqhyevgxdf" path="res://Assets/Brick_red.png" id="3_8yd7d"]
+[ext_resource type="Texture2D" uid="uid://cxlang6sjt0jd" path="res://Assets/Triangle.png" id="4_ca37m"]
 
 [sub_resource type="RectangleShape2D" id="1"]
 size = Vector2(90, 30)
@@ -8,11 +11,25 @@ size = Vector2(90, 30)
 [node name="Brick" type="StaticBody2D"]
 script = ExtResource("1")
 
-[node name="ColorRect" type="ColorRect" parent="."]
-offset_left = -45.0
-offset_top = -15.0
-offset_right = 45.0
-offset_bottom = 15.0
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("1")
+
+[node name="Brick" type="Sprite2D" parent="."]
+position = Vector2(0, 5)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("2_s70xk")
+
+[node name="Broken" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(0, 5)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("3_8yd7d")
+
+[node name="Shapes" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 1
+lifetime = 0.5
+one_shot = true
+texture = ExtResource("4_ca37m")
+scale_amount_min = 0.1
+scale_amount_max = 0.1

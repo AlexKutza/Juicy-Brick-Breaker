@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://ei3ny6s8bla5"]
+[gd_scene load_steps=3 format=3 uid="uid://ei3ny6s8bla5"]
 
 [ext_resource type="Script" path="res://UI/Main_Menu.gd" id="1"]
+[ext_resource type="FontFile" uid="uid://dfmpudgreviwj" path="res://Assets/Orbitron Bold.otf" id="2_jofij"]
 
 [node name="Main_Menu" type="Control"]
 layout_mode = 3
@@ -22,6 +23,8 @@ layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_bottom = -248.0
+theme_override_fonts/font = ExtResource("2_jofij")
+theme_override_font_sizes/font_size = 50
 text = "Brick Breaker"
 horizontal_alignment = 1
 vertical_alignment = 1

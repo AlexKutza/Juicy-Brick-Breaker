@@ -23,6 +23,7 @@ Levels="*res://Levels.gd"
 [display]
 
 window/size/viewport_height=800
+window/stretch/mode="viewport"
 
 [filesystem]
 
