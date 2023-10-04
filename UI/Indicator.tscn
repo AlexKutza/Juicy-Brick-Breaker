@@ -1,7 +1,15 @@
-[gd_scene format=3 uid="uid://dywcp8o4vsibs"]
+[gd_scene load_steps=2 format=3 uid="uid://dywcp8o4vsibs"]
+
+[ext_resource type="Texture2D" uid="uid://c0ra8um4do2u3" path="res://Assets/Highlight.png" id="1_qwkin"]
 
 [node name="Indicator" type="Node2D"]
 
 [node name="ColorRect" type="ColorRect" parent="."]
 offset_right = 10.0
 offset_bottom = 10.0
+
+[node name="Highlight" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(5, 5)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("1_qwkin")

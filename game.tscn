@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://bd5m3yq1k5fx8"]
+[gd_scene load_steps=18 format=3 uid="uid://bd5m3yq1k5fx8"]
 
 [ext_resource type="Script" path="res://Brick/Brick_Container.gd" id="1"]
 [ext_resource type="PackedScene" uid="uid://dmwf8wjdir6y5" path="res://Paddle/Paddle.tscn" id="2"]
@@ -13,6 +13,7 @@
 [ext_resource type="Script" path="res://Effects/Fever.gd" id="9"]
 [ext_resource type="Theme" uid="uid://bxf2rwoohper8" path="res://UI/Theme2.tres" id="10_a73kd"]
 [ext_resource type="FontFile" uid="uid://yilhk05egfdh" path="res://Assets/BebasNeue-Regular.otf" id="13_kei4v"]
+[ext_resource type="Script" path="res://UI/Camera2D.gd" id="14_eb1r5"]
 
 [sub_resource type="RectangleShape2D" id="1"]
 size = Vector2(204, 1000)
@@ -119,5 +120,9 @@ theme = ExtResource("10_a73kd")
 
 [node name="Instructions" parent="UI" instance=ExtResource("8")]
 theme = ExtResource("10_a73kd")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(576, 399)
+script = ExtResource("14_eb1r5")
 
 [connection signal="timeout" from="Fever/Timer" to="Fever" method="_on_Timer_timeout"]

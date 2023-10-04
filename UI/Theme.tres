@@ -1,9 +1,69 @@
-[gd_resource type="Theme" load_steps=3 format=3 uid="uid://vv0d2bhl8fy8"]
+[gd_resource type="Theme" load_steps=8 format=3 uid="uid://vv0d2bhl8fy8"]
 
 [ext_resource type="FontFile" uid="uid://yilhk05egfdh" path="res://Assets/BebasNeue-Regular.otf" id="1_gpkrc"]
 [ext_resource type="FontFile" uid="uid://bpe1unuhevqes" path="res://Assets/wheaton-capitals.capitals-regular.otf" id="2_sanbw"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a24d7"]
+bg_color = Color(0.0585938, 0.402344, 0.402344, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.996094, 0.996094, 0.996094, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kdrca"]
+bg_color = Color(0.0585938, 0.402344, 0.402344, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.996094, 0.996094, 0.996094, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7wvkh"]
+bg_color = Color(0.0585938, 0.402344, 0.402344, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.996094, 0.996094, 0.996094, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tt33s"]
+bg_color = Color(0.0588235, 0.403922, 0.403922, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hj5si"]
+bg_color = Color(0.0585938, 0.402344, 0.402344, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.996094, 0.996094, 0.996094, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
 [resource]
 Button/font_sizes/font_size = 30
 Button/fonts/font = ExtResource("1_gpkrc")
+Button/styles/disabled = SubResource("StyleBoxFlat_a24d7")
+Button/styles/focus = SubResource("StyleBoxFlat_kdrca")
+Button/styles/hover = SubResource("StyleBoxFlat_7wvkh")
+Button/styles/normal = SubResource("StyleBoxFlat_tt33s")
+Button/styles/pressed = SubResource("StyleBoxFlat_hj5si")
 Label/fonts/font = ExtResource("2_sanbw")
