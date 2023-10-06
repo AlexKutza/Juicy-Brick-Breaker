@@ -40,7 +40,7 @@ scale = Vector2(0.25, 0.25)
 texture = ExtResource("3_8yd7d")
 
 [node name="Brick" type="Sprite2D" parent="."]
-modulate = Color(0.996094, 0.996094, 0.996094, 1)
+modulate = Color(0.996078, 0.996078, 0.996078, 1)
 position = Vector2(0, 5)
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("2_s70xk")

@@ -13,6 +13,10 @@ var tween
 
 var powerup_prob = 0.1
 
+var sway_amplitude = 1
+var sway_initial_position = Vector2.ZERO
+var sway_randomizer = Vector2.ZERO
+
 func _ready():
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	position.x = new_position.x
@@ -23,11 +27,17 @@ func _ready():
 func _physics_process(_delta):
 	if dying and not $Triangle.emitting and not tween:
 		queue_free()
+	var pos_x = (sin(Global.sway_index)*(sway_amplitude + sway_randomizer.x))
+	var pos_y = (sin(Global.sway_index)*(sway_amplitude + sway_randomizer.y))
+	$Brick.position = Vector2(sway_initial_position.x + pos_x, sway_initial_position.y + pos_x)
+	$Broken.position = Vector2(sway_initial_position.x + pos_x, sway_initial_position.y + pos_x)
 
 func hit(_ball):
 	die()
 
 func die():
+	var Brick_Sound = get_node("/root/Game/Brick_Sound")
+	Brick_Sound.play()
 	dying = true
 	collision_layer = 0
 	$Brick.hide()

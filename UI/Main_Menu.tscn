@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://ei3ny6s8bla5"]
+[gd_scene load_steps=5 format=3 uid="uid://ei3ny6s8bla5"]
 
 [ext_resource type="Script" path="res://UI/Main_Menu.gd" id="1"]
 [ext_resource type="Theme" uid="uid://vv0d2bhl8fy8" path="res://UI/Theme.tres" id="1_popb3"]
 [ext_resource type="FontFile" uid="uid://bpe1unuhevqes" path="res://Assets/wheaton-capitals.capitals-regular.otf" id="2_fgi4y"]
+[ext_resource type="PackedScene" uid="uid://dr50duubwf50c" path="res://Ball/ball.tscn" id="4_ro4jj"]
 
 [node name="Main_Menu" type="Control"]
 layout_mode = 3
@@ -60,6 +61,8 @@ offset_bottom = 98.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "Quit"
+
+[node name="Ball" parent="." instance=ExtResource("4_ro4jj")]
 
 [connection signal="pressed" from="Play" to="." method="_on_Play_pressed"]
 [connection signal="pressed" from="Quit" to="." method="_on_Quit_pressed"]

@@ -25,6 +25,8 @@ func _input(event):
 		target.x += event.relative.x
 
 func hit(_ball):
+	var Paddle_Sound = get_node("/root/Game/Paddle_Sound")
+	Paddle_Sound.play()
 	$Squiggle.emitting = true
 	$ZigZag.emitting = true
 	$Circle.emitting = true

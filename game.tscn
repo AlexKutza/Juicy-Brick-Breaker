@@ -1,9 +1,10 @@
-[gd_scene load_steps=18 format=3 uid="uid://bd5m3yq1k5fx8"]
+[gd_scene load_steps=24 format=3 uid="uid://bd5m3yq1k5fx8"]
 
 [ext_resource type="Script" path="res://Brick/Brick_Container.gd" id="1"]
 [ext_resource type="PackedScene" uid="uid://dmwf8wjdir6y5" path="res://Paddle/Paddle.tscn" id="2"]
 [ext_resource type="Texture2D" uid="uid://di037fovb5rjd" path="res://Assets/Background.png" id="2_3nrt1"]
 [ext_resource type="Script" path="res://Ball/Ball_Container.gd" id="3"]
+[ext_resource type="Script" path="res://Effects/Comet_Container.gd" id="3_m0uh4"]
 [ext_resource type="Script" path="res://Game.gd" id="4"]
 [ext_resource type="Texture2D" uid="uid://nscsobhw7kdo" path="res://Assets/Walls.png" id="4_b3tvc"]
 [ext_resource type="PackedScene" uid="uid://ci5q3vmuimsfr" path="res://UI/Pause_Menu.tscn" id="5"]
@@ -14,6 +15,11 @@
 [ext_resource type="Theme" uid="uid://bxf2rwoohper8" path="res://UI/Theme2.tres" id="10_a73kd"]
 [ext_resource type="FontFile" uid="uid://yilhk05egfdh" path="res://Assets/BebasNeue-Regular.otf" id="13_kei4v"]
 [ext_resource type="Script" path="res://UI/Camera2D.gd" id="14_eb1r5"]
+[ext_resource type="AudioStream" uid="uid://cuypxsqrd4qxs" path="res://Assets/juicy.mp3" id="16_v5hwk"]
+[ext_resource type="AudioStream" uid="uid://dl8qpftsllf7e" path="res://Assets/Wall_Sound.wav" id="17_4tjbm"]
+[ext_resource type="AudioStream" uid="uid://vupgyhsg2q7t" path="res://Assets/Brick_Sound.wav" id="18_2aqrp"]
+[ext_resource type="AudioStream" uid="uid://bfqr8y1yviwb6" path="res://Assets/Die_Sound.wav" id="19_2x72c"]
+[ext_resource type="AudioStream" uid="uid://dg5htif0imasi" path="res://Assets/Paddle_Sound.wav" id="20_d70yf"]
 
 [sub_resource type="RectangleShape2D" id="1"]
 size = Vector2(204, 1000)
@@ -121,8 +127,30 @@ theme = ExtResource("10_a73kd")
 [node name="Instructions" parent="UI" instance=ExtResource("8")]
 theme = ExtResource("10_a73kd")
 
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(576, 399)
+[node name="Comet_Container" type="Node2D" parent="."]
+script = ExtResource("3_m0uh4")
+
+[node name="Camera" type="Camera2D" parent="."]
+position = Vector2(2, 0)
+anchor_mode = 0
 script = ExtResource("14_eb1r5")
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("16_v5hwk")
+autoplay = true
+
+[node name="Wall_Sound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("17_4tjbm")
+volume_db = 4.685
+
+[node name="Brick_Sound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("18_2aqrp")
+volume_db = -5.622
+
+[node name="Die_Sound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("19_2x72c")
+
+[node name="Paddle_Sound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("20_d70yf")
 
 [connection signal="timeout" from="Fever/Timer" to="Fever" method="_on_Timer_timeout"]
