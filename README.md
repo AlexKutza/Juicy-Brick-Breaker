@@ -1,4 +1,4 @@
-# Project Name
+# Juicy Brick Breaker
 
 MSCH-C220 Project 3
 
