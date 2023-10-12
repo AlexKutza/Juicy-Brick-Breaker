@@ -13,12 +13,18 @@ var indicator_scale_target = Vector2(0.2,0.2)
 var tween
 var tween2
 
+var fever_h = 0.0
+var fever_s = 0.0
+var fever_v = 0.0
+
 func _ready():
 	update_score()
 	update_time()
 	update_lives()
 	update_fever()
-	
+	fever_h = 0.0
+	fever_s = 0.78
+	fever_v = 0.88
 
 
 func update_score():

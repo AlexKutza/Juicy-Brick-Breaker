@@ -90,7 +90,7 @@ func wobble():
 		var pos = wobble_direction * wobble_amplitude * sin(wobble_period)
 		$Images.position = pos
 		wobble_amplitude -= decay_wobble
-		
+
 func distort():
 	var direction = Vector2(1 + linear_velocity.length() * distort_effect, 1 - linear_velocity.length() * distort_effect)
 	$Images.rotation = linear_velocity.angle()

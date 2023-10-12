@@ -9,7 +9,7 @@ var payloads = [
 	,load("res://Powerups/Payload_AddBall.tscn")
 ]
 
-var grav_force = 0.8
+var grav_force = 0.7
 var velocity = Vector2.ZERO
 
 func _ready():

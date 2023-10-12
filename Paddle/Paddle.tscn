@@ -1,11 +1,11 @@
 [gd_scene load_steps=12 format=3 uid="uid://dmwf8wjdir6y5"]
 
 [ext_resource type="Script" path="res://Paddle/Paddle.gd" id="1"]
-[ext_resource type="Texture2D" uid="uid://j08eutogiril" path="res://Assets/Paddle.png" id="2_hwtod"]
 [ext_resource type="Texture2D" uid="uid://ccbnm1h4qghit" path="res://Assets/Squiggle.png" id="3_av46q"]
 [ext_resource type="Texture2D" uid="uid://b284cvr6x0q8p" path="res://Assets/Zigzag.png" id="4_0hlbe"]
 [ext_resource type="Texture2D" uid="uid://xtlra5q3p3sm" path="res://Assets/Circle.png" id="5_2og25"]
 [ext_resource type="Texture2D" uid="uid://bxdrsquh5l51f" path="res://Assets/Highlight2.png" id="5_bns7w"]
+[ext_resource type="Texture2D" uid="uid://ct6sandlnq3hm" path="res://Assets/Shapes (6).png" id="6_8ei61"]
 
 [sub_resource type="RectangleShape2D" id="1"]
 size = Vector2(100, 20)
@@ -100,4 +100,4 @@ texture = ExtResource("5_bns7w")
 
 [node name="Paddle" type="Sprite2D" parent="Images"]
 scale = Vector2(0.25, 0.25)
-texture = ExtResource("2_hwtod")
+texture = ExtResource("6_8ei61")

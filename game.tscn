@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://bd5m3yq1k5fx8"]
+[gd_scene load_steps=26 format=3 uid="uid://bd5m3yq1k5fx8"]
 
 [ext_resource type="Script" path="res://Brick/Brick_Container.gd" id="1"]
 [ext_resource type="PackedScene" uid="uid://dmwf8wjdir6y5" path="res://Paddle/Paddle.tscn" id="2"]
@@ -16,10 +16,11 @@
 [ext_resource type="FontFile" uid="uid://yilhk05egfdh" path="res://Assets/BebasNeue-Regular.otf" id="13_kei4v"]
 [ext_resource type="Script" path="res://UI/Camera2D.gd" id="14_eb1r5"]
 [ext_resource type="AudioStream" uid="uid://cuypxsqrd4qxs" path="res://Assets/juicy.mp3" id="16_v5hwk"]
-[ext_resource type="AudioStream" uid="uid://dl8qpftsllf7e" path="res://Assets/Wall_Sound.wav" id="17_4tjbm"]
-[ext_resource type="AudioStream" uid="uid://vupgyhsg2q7t" path="res://Assets/Brick_Sound.wav" id="18_2aqrp"]
+[ext_resource type="AudioStream" uid="uid://d2e3rsjpxfwrj" path="res://Assets/Wall.wav" id="17_1a3dk"]
+[ext_resource type="AudioStream" uid="uid://c8bfa47udus7h" path="res://Assets/Brick.wav" id="18_634nh"]
 [ext_resource type="AudioStream" uid="uid://bfqr8y1yviwb6" path="res://Assets/Die_Sound.wav" id="19_2x72c"]
-[ext_resource type="AudioStream" uid="uid://dg5htif0imasi" path="res://Assets/Paddle_Sound.wav" id="20_d70yf"]
+[ext_resource type="AudioStream" uid="uid://dbgssw1tebgll" path="res://Assets/Paddle2.wav" id="20_miram"]
+[ext_resource type="Shader" path="res://Effects/game.gdshader" id="21_1l5lk"]
 
 [sub_resource type="RectangleShape2D" id="1"]
 size = Vector2(204, 1000)
@@ -32,6 +33,30 @@ Button/font_sizes/font_size = 30
 Button/fonts/font = ExtResource("13_kei4v")
 Label/font_sizes/font_size = 30
 Label/fonts/font = ExtResource("13_kei4v")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2sq7a"]
+shader = ExtResource("21_1l5lk")
+shader_parameter/overlay = true
+shader_parameter/scanlines_opacity = 0.195
+shader_parameter/scanlines_width = 0.25
+shader_parameter/grille_opacity = 0.165
+shader_parameter/resolution = Vector2(2560, 1920)
+shader_parameter/pixelate = false
+shader_parameter/roll = true
+shader_parameter/roll_speed = 1.0
+shader_parameter/roll_size = 15.0
+shader_parameter/roll_variation = 3.623
+shader_parameter/distort_intensity = 0.0
+shader_parameter/noise_opacity = 0.069
+shader_parameter/noise_speed = 5.0
+shader_parameter/static_noise_intensity = 0.0
+shader_parameter/aberration = 0.02
+shader_parameter/brightness = 1.4
+shader_parameter/discolor = false
+shader_parameter/warp_amount = 0.15
+shader_parameter/clip_warp = false
+shader_parameter/vignette_intensity = 0.6
+shader_parameter/vignette_opacity = 0.403
 
 [node name="Game" type="Node2D"]
 script = ExtResource("4")
@@ -51,8 +76,8 @@ position = Vector2(-88, 400)
 shape = SubResource("1")
 
 [node name="Wall" type="Sprite2D" parent="Wall_Container/Wall_Left"]
-position = Vector2(1, 400.6)
-scale = Vector2(0.555208, 1.2358)
+position = Vector2(1, 388)
+scale = Vector2(0.555208, 1.36728)
 texture = ExtResource("4_b3tvc")
 
 [node name="Wall_Right" type="StaticBody2D" parent="Wall_Container"]
@@ -64,8 +89,8 @@ position = Vector2(88, 400)
 shape = SubResource("1")
 
 [node name="Wall" type="Sprite2D" parent="Wall_Container/Wall_Right"]
-position = Vector2(-2, 399.6)
-scale = Vector2(0.555, 1.23272)
+position = Vector2(-2, 387)
+scale = Vector2(0.555, 1.37037)
 texture = ExtResource("4_b3tvc")
 flip_h = true
 
@@ -77,9 +102,9 @@ position = Vector2(526, -85)
 shape = SubResource("2")
 
 [node name="Wall" type="Sprite2D" parent="Wall_Container/Wall_Top"]
-position = Vector2(576.854, 3.00002)
+position = Vector2(586.654, 3.00006)
 rotation = 1.5708
-scale = Vector2(0.555, 1.81521)
+scale = Vector2(0.555, 1.93345)
 texture = ExtResource("4_b3tvc")
 
 [node name="CornerWall" type="Sprite2D" parent="Wall_Container"]
@@ -111,6 +136,8 @@ script = ExtResource("3")
 script = ExtResource("9")
 
 [node name="Timer" type="Timer" parent="Fever"]
+wait_time = 0.75
+one_shot = true
 
 [node name="UI" type="CanvasLayer" parent="."]
 
@@ -140,17 +167,25 @@ stream = ExtResource("16_v5hwk")
 autoplay = true
 
 [node name="Wall_Sound" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("17_4tjbm")
-volume_db = 4.685
+stream = ExtResource("17_1a3dk")
+volume_db = 5.69
 
 [node name="Brick_Sound" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("18_2aqrp")
-volume_db = -5.622
+stream = ExtResource("18_634nh")
+volume_db = 8.446
 
 [node name="Die_Sound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("19_2x72c")
 
 [node name="Paddle_Sound" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("20_d70yf")
+stream = ExtResource("20_miram")
+volume_db = 13.062
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_2sq7a")
+offset_left = -8.0
+offset_top = -32.0
+offset_right = 1165.0
+offset_bottom = 838.0
 
 [connection signal="timeout" from="Fever/Timer" to="Fever" method="_on_Timer_timeout"]
