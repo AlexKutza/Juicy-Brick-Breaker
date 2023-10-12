@@ -23,14 +23,18 @@ func _ready():
 	position.y = -100
 	tween = create_tween()
 	tween.tween_property(self, "position", new_position, 0.5 * randf()*2).set_trans(Tween.TRANS_BOUNCE)
+	sway_initial_position = $Brick.position
+	sway_initial_position = $Broken.position
+	sway_randomizer = Vector2(randf()*4-3.0, randf()*4-3.0)
 
 func _physics_process(_delta):
 	if dying and not $Triangle.emitting and not tween:
 		queue_free()
 	var pos_x = (sin(Global.sway_index)*(sway_amplitude + sway_randomizer.x))
 	var pos_y = (sin(Global.sway_index)*(sway_amplitude + sway_randomizer.y))
-	$Brick.position = Vector2(sway_initial_position.x + pos_x, sway_initial_position.y + pos_x)
-	$Broken.position = Vector2(sway_initial_position.x + pos_x, sway_initial_position.y + pos_x)
+	$Brick.position = Vector2(sway_initial_position.x + pos_x, sway_initial_position.y + pos_y)
+	$Broken.position = Vector2(sway_initial_position.x + pos_x, sway_initial_position.y + pos_y)
+
 
 func hit(_ball):
 	die()
